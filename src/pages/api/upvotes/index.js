@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import {PrismaClient} from "../../../lib/db"
 
-export async function post(req,res){
+export default async function post(req,res){
     const session = await getServerSession();
     if(session?.user?.email){
         return res.status(403).json({
@@ -19,7 +19,7 @@ export async function post(req,res){
         })
     }
     try{
-        const data = await req.json();
+        const data = JSON.parse(req.body)
         await PrismaClient.upvotes.create({
             userId: userid,
             streamId: data.streamId
