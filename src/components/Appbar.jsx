@@ -1,5 +1,5 @@
 // "use client"
-import { Button } from "@mui/material";
+import { Button } from "@/components/ui/button"
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export function AppBar() {
@@ -8,19 +8,18 @@ export function AppBar() {
   return (
     <div>
       <div className="flex justify-between" style={{display: 'flex', justifyContent: "space-between"}}>
-        <h1 style={{display: "inline"}}>Muzi</h1>
+        
        
           {!session?.user && (
-            <Button
-              className="m-2 p-2 "
-              onClick={() => signIn()} // Call signIn function
+            <Button variant="outline" className="text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-white"
+             
+              onClick={() => signIn("google", { callbackUrl: '/dashboard' })} // Call signIn function
             >
               Sign In
             </Button>
           )}
           {session?.user && (
-            <Button
-              className="m-2 p-2 "
+            <Button variant="outline" className="text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-white"
               onClick={() => signOut()} // Call signOut function
             >
               Sign Out

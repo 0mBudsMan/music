@@ -3,10 +3,12 @@ import GoogleProvider from "next-auth/providers/google";
 import {prismaClient} from "../../../lib/db"
 
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.CLIENT_ID,  
       clientSecret: process.env.CLIENT_SECRET,  
+      
     }),
   ],
   callbacks:{

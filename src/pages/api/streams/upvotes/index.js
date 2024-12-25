@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import {PrismaClient} from "../../../lib/db"
+import {PrismaClient} from "../../../../lib/db"
 
 export default async function post(req,res){
     const session = await getServerSession();

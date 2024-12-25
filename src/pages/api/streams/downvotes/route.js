@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { PrismaClient } from "../../../lib/db";
+import { PrismaClient } from "../../../../lib/db";
 import { useSearchParams } from 'next/navigation'
 
 export async function post(req, res) {
