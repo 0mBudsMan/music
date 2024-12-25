@@ -4,7 +4,8 @@ import youtubesearchapi from "youtube-search-api"
 export default async function POST(req, res) {
   
     try {
-      const data = JSON.parse(req.body);
+      console.log(req.body)
+      const data = (req.body);
      
       const isYT = youtubeUrl.valid(data.url)
       

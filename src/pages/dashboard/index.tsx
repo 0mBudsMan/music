@@ -26,13 +26,26 @@ export default function MusicVotingPage() {
   ]);
   const [currentVideo, setCurrentVideo] = useState("dQw4w9WgXcQ");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const videoId = extractVideoId(videoLink);
-    if (videoId) {
-      setQueue([...queue, { id: videoId, title: "New Video", votes: 0 }]);
-      setVideoLink("");
+    // if (videoId) {
+    //   setQueue([...queue, { id: videoId, title: "New Video", votes: 0 }]);
+    //   setVideoLink("");
+    // }
+    if(videoId){
+    await axios.post("/api/streams",{
+      
+        url: `https://www.youtube.com/watch?v=${videoId}`,
+        creatorID: "4ee38575-154f-41cf-a865-64eb71e5e9ef"
     }
+  ).then((res)=>{
+    alert("HYE")
+  })
+  .catch((e)=>{
+    console.log("Error ina dding vidoe")
+  })
+}
   };
 
   const handleVote = (id: string, increment: number) => {
